@@ -56,7 +56,7 @@ int main()
     string names[] = {"Alex", "Erick" , "Ashley", "Dustin", "Robin", "Steve", "Nancy", "Jane", "Jack", "Lily", "Miri", "Ben"};
     string drinks[] = {"Latte", "Cold Brew", "Espresso", "Mocha", "Cappuccino", "Iced Tea"};
 
-    cout << "Coffee Booth is open: " << endl;
+    cout << "== Coffee Booth is open! ==" << endl;
     for (int i = 0; i < customers; i++) {
         string aName = names[rand() % 12];
         string aDrink = drinks[rand() % 6];
@@ -65,15 +65,21 @@ int main()
 
     cout << "\nQueue at Coffee Booth: \n";
     line.displayQueue();
+    cout << endl;
 
     // Simulation
     int roundsMax = 10;
-    for (int i = 0; i < roundsMax; i++) {
+    for (int i = 0; i <= roundsMax; i++) {
+
         cout << "Round #" << i + 1 << endl;
         // 50% probability customer joins
         int prob = rand() % 100 + 1;
-        if (prob <= 50)
-            line.
+        if (prob <= 50) {
+            string newName = names[rand() % 12];
+            string newDrink = drinks[rand() % 6];
+            cout << "New customer: " << newName << " - " << newDrink << endl;
+            line.addCust(newName, newDrink);
+        }
     }
 
     return 0;
