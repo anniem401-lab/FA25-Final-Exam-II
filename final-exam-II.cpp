@@ -8,7 +8,7 @@
 #include <cstdlib>
 using namespace std;
 
-const int customers = 5;
+const int customers = 3;
 
 struct Node {
     string name;
@@ -56,14 +56,25 @@ int main()
     string names[] = {"Alex", "Erick" , "Ashley", "Dustin", "Robin", "Steve", "Nancy", "Jane", "Jack", "Lily", "Miri", "Ben"};
     string drinks[] = {"Latte", "Cold Brew", "Espresso", "Mocha", "Cappuccino", "Iced Tea"};
 
-    for (int i = 0; i < 5; i++) {
-        string aName = names[rand() % 11];
+    cout << "Coffee Booth is open: " << endl;
+    for (int i = 0; i < customers; i++) {
+        string aName = names[rand() % 12];
         string aDrink = drinks[rand() % 6];
         line.addCust(aName, aDrink);
     }
 
     cout << "\nQueue at Coffee Booth: \n";
     line.displayQueue();
+
+    // Simulation
+    int roundsMax = 10;
+    for (int i = 0; i < roundsMax; i++) {
+        cout << "Round #" << i + 1 << endl;
+        // 50% probability customer joins
+        int prob = rand() % 100 + 1;
+        if (prob <= 50)
+            line.
+    }
 
     return 0;
 }
