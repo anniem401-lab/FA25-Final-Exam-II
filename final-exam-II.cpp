@@ -79,16 +79,16 @@ int main()
     srand(time(0));
 
     Queue CB_line; // Coffee Booth
-    deque<string> MB_line; // Muffin Booth
+    deque<pair<string, string>> MB_line; // Muffin Booth
 
-    string names[] = {"Alex", "Erick" , "Ashley", "Dustin", "Robin", "Steve", "Nancy", "Jane", "Jack", "Lily", "Miri", "Ben", "Max", "Lucas" , "Mike"};
+    string names[] = {"Alex", "Erick" , "Ashley", "Dustin", "Robin", "Steve", "Nancy", "Jane", "Jack", "Lily", "Miri", "Ben", "Max", "Lucas" , "Mike", "Pat", "Jen"};
     string drinks[] = {"Latte", "Cold Brew", "Espresso", "Mocha", "Cappuccino", "Iced Tea"};
 
     string muffins[] = {"Blueberry", "Chocolate", "Lemon", "Strawberry", "Banana Nut", "Coffee Cake"};
 
     cout << "\n== Coffee & Muffin Booth are open! ==" << endl;
     for (int i = 0; i < customers; i++) { // Coffee Booth
-        string aName = names[rand() % 15];
+        string aName = names[rand() % 17];
         string aDrink = drinks[rand() % 6];
         CB_line.addCust(aName, aDrink);
     }
@@ -100,13 +100,14 @@ int main()
     }
 
     cout << "\nInitial queue at Coffee Booth: \n";
+    cout << "----------------------------------\n";
     CB_line.displayQueue();
     cout << endl;
 
     // Simulation
     int roundsMax = 10;
     for (int i = 0; i < roundsMax; i++) {
-        cout << "---------------------\n";
+        cout << "----------------------------------\n";
         cout << "Round #" << i + 1 << endl;
 
         if (!CB_line.empty()) {
@@ -125,6 +126,6 @@ int main()
             CB_line.addCust(newName, newDrink);
         }
     }
-
+    cout << endl;
     return 0;
 }
