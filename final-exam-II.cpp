@@ -34,6 +34,14 @@ public:
         newNode->next = head;
         head = newNode;
 
+        if (head == nullptr) {
+            head = newNode;
+            tail = newNode;
+        }
+    }
+
+    bool empty() {
+        return head == nullptr;
     }
 
     void displayQueue() {
@@ -53,12 +61,12 @@ int main()
 
     Queue line;
 
-    string names[] = {"Alex", "Erick" , "Ashley", "Dustin", "Robin", "Steve", "Nancy", "Jane", "Jack", "Lily", "Miri", "Ben"};
+    string names[] = {"Alex", "Erick" , "Ashley", "Dustin", "Robin", "Steve", "Nancy", "Jane", "Jack", "Lily", "Miri", "Ben", "Max", "Lucas" , "Mike"};
     string drinks[] = {"Latte", "Cold Brew", "Espresso", "Mocha", "Cappuccino", "Iced Tea"};
 
-    cout << "== Coffee Booth is open! ==" << endl;
+    cout << "\n== Coffee Booth is open! ==" << endl;
     for (int i = 0; i < customers; i++) {
-        string aName = names[rand() % 12];
+        string aName = names[rand() % 15];
         string aDrink = drinks[rand() % 6];
         line.addCust(aName, aDrink);
     }
@@ -69,9 +77,14 @@ int main()
 
     // Simulation
     int roundsMax = 10;
-    for (int i = 0; i <= roundsMax; i++) {
-
+    for (int i = 0; i < roundsMax; i++) {
+        cout << "---------------------\n";
         cout << "Round #" << i + 1 << endl;
+
+        if (line.empty()) {
+            cout << "Queue is empty.\n";
+        }
+
         // 50% probability customer joins
         int prob = rand() % 100 + 1;
         if (prob <= 50) {
