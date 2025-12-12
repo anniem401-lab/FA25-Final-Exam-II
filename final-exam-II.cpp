@@ -14,6 +14,7 @@ const int customers = 3;
 struct Node {
     string name;
     string drink;
+    string muffin;
     Node* next;
 };
 
@@ -83,13 +84,19 @@ int main()
     string names[] = {"Alex", "Erick" , "Ashley", "Dustin", "Robin", "Steve", "Nancy", "Jane", "Jack", "Lily", "Miri", "Ben", "Max", "Lucas" , "Mike"};
     string drinks[] = {"Latte", "Cold Brew", "Espresso", "Mocha", "Cappuccino", "Iced Tea"};
 
-    string muffins[] = {"Blueberry", "Chocoalte", "Lemon", "Strawberry"};
+    string muffins[] = {"Blueberry", "Chocolate", "Lemon", "Strawberry", "Banana Nut", "Coffee Cake"};
 
-    cout << "\n== Coffee Booth is open! ==" << endl;
-    for (int i = 0; i < customers; i++) {
+    cout << "\n== Coffee & Muffin Booth are open! ==" << endl;
+    for (int i = 0; i < customers; i++) { // Coffee Booth
         string aName = names[rand() % 15];
         string aDrink = drinks[rand() % 6];
         CB_line.addCust(aName, aDrink);
+    }
+
+    for (int i = 0; i < customers; i++) {
+        string aName = names[rand() % 15];
+        string aMuffin = muffins[rand() % 6];
+        MB_line.push_back({aName, aMuffin});
     }
 
     cout << "\nInitial queue at Coffee Booth: \n";
