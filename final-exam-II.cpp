@@ -6,6 +6,7 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include <deque>
 using namespace std;
 
 const int customers = 3;
@@ -76,20 +77,23 @@ int main()
     Node *head = nullptr;
     srand(time(0));
 
-    Queue line;
+    Queue CB_line; // Coffee Booth
+    deque<string> MB_line; // Muffin Booth
 
     string names[] = {"Alex", "Erick" , "Ashley", "Dustin", "Robin", "Steve", "Nancy", "Jane", "Jack", "Lily", "Miri", "Ben", "Max", "Lucas" , "Mike"};
     string drinks[] = {"Latte", "Cold Brew", "Espresso", "Mocha", "Cappuccino", "Iced Tea"};
+
+    string muffins[] = {"Blueberry", "Chocoalte", "Lemon", "Strawberry"};
 
     cout << "\n== Coffee Booth is open! ==" << endl;
     for (int i = 0; i < customers; i++) {
         string aName = names[rand() % 15];
         string aDrink = drinks[rand() % 6];
-        line.addCust(aName, aDrink);
+        CB_line.addCust(aName, aDrink);
     }
 
     cout << "\nInitial queue at Coffee Booth: \n";
-    line.displayQueue();
+    CB_line.displayQueue();
     cout << endl;
 
     // Simulation
@@ -98,8 +102,8 @@ int main()
         cout << "---------------------\n";
         cout << "Round #" << i + 1 << endl;
 
-        if (!line.empty()) {
-            line.serveCust();
+        if (!CB_line.empty()) {
+            CB_line.serveCust();
         }
         else {
             cout << "Queue is empty.\n";
@@ -111,7 +115,7 @@ int main()
             string newName = names[rand() % 12];
             string newDrink = drinks[rand() % 6];
             cout << "New customer: " << newName << " - " << newDrink << endl;
-            line.addCust(newName, newDrink);
+            CB_line.addCust(newName, newDrink);
         }
     }
 
