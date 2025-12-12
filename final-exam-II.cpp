@@ -21,6 +21,16 @@ private:
 
 public:
     Queue() {
+        head = nullptr;
+        tail = nullptr;
+    }
+
+    void addCust(string name, string drink) {
+        Node* newNode = new Node;
+        newNode->name = name;
+        newNode->drink = drink;
+        newNode->next = head;
+        head = newNode;
         
     }
 };
