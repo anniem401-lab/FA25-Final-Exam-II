@@ -44,6 +44,23 @@ public:
         return head == nullptr;
     }
 
+    void serveCust() {
+        if (!head) {
+            cout << "No customer to serve.\n";
+            return;
+        }
+
+        Node* temp = head;
+        cout << "Serving: " << temp->name << " - " << temp->drink << endl;
+
+        head = head->next;
+        delete temp;
+
+        if (head == nullptr) {
+            tail = nullptr;
+        }
+    }
+
     void displayQueue() {
         Node* current = head;
         while (current != nullptr) {
@@ -71,7 +88,7 @@ int main()
         line.addCust(aName, aDrink);
     }
 
-    cout << "\nQueue at Coffee Booth: \n";
+    cout << "\nInitial queue at Coffee Booth: \n";
     line.displayQueue();
     cout << endl;
 
@@ -81,7 +98,10 @@ int main()
         cout << "---------------------\n";
         cout << "Round #" << i + 1 << endl;
 
-        if (line.empty()) {
+        if (!line.empty()) {
+            line.serveCust();
+        }
+        else {
             cout << "Queue is empty.\n";
         }
 
